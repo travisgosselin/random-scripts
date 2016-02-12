@@ -10,6 +10,8 @@ folderToClean = folderToClean ?? Directory.GetCurrentDirectory();
 Console.WriteLine("Cleaning folder {0}", folderToClean);
 
 var files = Directory.GetFiles(folderToClean, "*.vssscc", SearchOption.AllDirectories).ToList();
+files.AddRange(Directory.GetFiles(folderToClean, "*.vspscc", SearchOption.AllDirectories).ToList());
+files.AddRange(Directory.GetFiles(folderToClean, "*.user", SearchOption.AllDirectories).ToList());
 Console.WriteLine("Found {0} to delete", files.Count());
 files.ForEach(t => {
     File.Delete(t);
